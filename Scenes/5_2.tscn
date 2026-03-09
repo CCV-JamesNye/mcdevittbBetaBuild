@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bdjaxfep4qkuo"]
 
-[ext_resource type="Texture2D" uid="uid://bqe8gqtljejq5" path="res://Art/background.jpg" id="1_tqpaw"]
-[ext_resource type="Texture2D" uid="uid://d0i5gx76ej4r" path="res://Art/grass.png" id="2_f5bl7"]
-[ext_resource type="Script" uid="uid://84pgdjpt8iny" path="res://Scenes/Player/Scripts/player-characterbody.gd" id="3_bbdfx"]
-[ext_resource type="Texture2D" uid="uid://chil08u31bt7c" path="res://Art/Sprites/16x32/16x32 All Animations.png" id="4_nnp3v"]
+[ext_resource type="Script" uid="uid://ol5p7gb4kwwy" path="res://Scenes/Player/Scripts/5_2.gd" id="1_ikgf8"]
+[ext_resource type="Texture2D" uid="uid://bqe8gqtljejq5" path="res://Art/background.jpg" id="2_3idxa"]
+[ext_resource type="Texture2D" uid="uid://d0i5gx76ej4r" path="res://Art/grass.png" id="3_kawbu"]
+[ext_resource type="Script" uid="uid://84pgdjpt8iny" path="res://Scenes/Player/Scripts/player-characterbody.gd" id="4_dxckq"]
+[ext_resource type="Texture2D" uid="uid://chil08u31bt7c" path="res://Art/Sprites/16x32/16x32 All Animations.png" id="5_st6jg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbdfx"]
 size = Vector2(320, 46)
@@ -146,17 +147,18 @@ _data = {
 }
 
 [node name="5-2" type="Node2D" unique_id=2013888550]
+script = ExtResource("1_ikgf8")
 
 [node name="mountains" type="Sprite2D" parent="." unique_id=1010624436]
 texture_filter = 2
 position = Vector2(160.5, 90.5)
 scale = Vector2(0.069227435, 0.061086737)
-texture = ExtResource("1_tqpaw")
+texture = ExtResource("2_3idxa")
 
 [node name="Grass" type="Sprite2D" parent="." unique_id=297921063]
 position = Vector2(160, 140.5)
 scale = Vector2(1.0457517, 1.3500001)
-texture = ExtResource("2_f5bl7")
+texture = ExtResource("3_kawbu")
 
 [node name="floor" type="StaticBody2D" parent="." unique_id=966332674]
 
@@ -167,7 +169,7 @@ shape = SubResource("RectangleShape2D_bbdfx")
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1846505198]
 position = Vector2(-116.00001, -7)
 scale = Vector2(1.5, 1.5)
-script = ExtResource("3_bbdfx")
+script = ExtResource("4_dxckq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=297148975]
 position = Vector2(176.00006, 81.66667)
@@ -175,7 +177,7 @@ shape = SubResource("RectangleShape2D_nnp3v")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1510161516]
 position = Vector2(176, 78)
-texture = ExtResource("4_nnp3v")
+texture = ExtResource("5_st6jg")
 hframes = 10
 vframes = 10
 
