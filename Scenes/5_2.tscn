@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://7cwfcovirry6" path="res://Scenes/Player/Scripts/finish.gd" id="5_kawbu"]
 [ext_resource type="Texture2D" uid="uid://chil08u31bt7c" path="res://Art/Sprites/16x32/16x32 All Animations.png" id="5_st6jg"]
 [ext_resource type="Script" uid="uid://cnfmn28sh2yok" path="res://Scenes/Player/Scripts/kill_box.gd" id="7_kawbu"]
+[ext_resource type="PackedScene" uid="uid://cithh10v4hpcv" path="res://Scenes/Enemies/enemy.tscn" id="8_dxckq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbdfx"]
 size = Vector2(328, 14)
@@ -154,6 +155,9 @@ size = Vector2(17, 185)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxckq"]
 size = Vector2(3, 108)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_st6jg"]
+size = Vector2(79, 12)
+
 [node name="5-2" type="Node2D" unique_id=2013888550]
 script = ExtResource("1_ikgf8")
 
@@ -196,18 +200,18 @@ position = Vector2(-98, 91)
 position = Vector2(89.5, -0.5)
 shape = SubResource("RectangleShape2D_kawbu")
 
-[node name="StaticBody2D" type="Area2D" parent="." unique_id=899195980]
+[node name="Finish" type="Area2D" parent="." unique_id=899195980]
 position = Vector2(204, 69)
 script = ExtResource("5_kawbu")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=346638737]
+[node name="Sprite2D" type="Sprite2D" parent="Finish" unique_id=346638737]
 position = Vector2(68.57205, 12.809093)
 rotation = 0.6719518
 scale = Vector2(0.6308376, 0.43518713)
 texture = ExtResource("5_3idxa")
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1804183697]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish" unique_id=1804183697]
 position = Vector2(105.5, 53)
 shape = SubResource("RectangleShape2D_dxckq")
 
@@ -264,3 +268,22 @@ script = ExtResource("7_kawbu")
 position = Vector2(1.4999954, -0.6395817)
 scale = Vector2(1.0714283, 1.0208333)
 polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
+
+[node name="ledge" type="StaticBody2D" parent="." unique_id=1676898832]
+position = Vector2(181, 130)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ledge" unique_id=2114760904]
+position = Vector2(27.5, -5)
+shape = SubResource("RectangleShape2D_st6jg")
+one_way_collision = true
+debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="ledge" unique_id=15494340]
+offset_left = -12.0
+offset_top = -11.0
+offset_right = 67.0
+offset_bottom = 1.0
+color = Color(0.1254902, 1, 1, 1)
+
+[node name="Enemy" parent="." unique_id=1317683084 instance=ExtResource("8_dxckq")]
+position = Vector2(174, 102)
