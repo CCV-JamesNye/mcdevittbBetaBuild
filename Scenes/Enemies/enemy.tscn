@@ -102,6 +102,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnp3v"]
 size = Vector2(11.999994, 26)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcvw6"]
+radius = 100.0
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1317683084]
 script = ExtResource("1_jcvw6")
 
@@ -121,3 +124,17 @@ target_position = Vector2(0, 5)
 [node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=1359057249]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_nnp3v")
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1543423643]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=1638199236]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_jcvw6")
+
+[node name="ChaseTimer" type="Timer" parent="." unique_id=1576728133]
+wait_time = 2.0
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="." unique_id=230437428]
