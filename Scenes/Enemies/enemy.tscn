@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://chil08u31bt7c" path="res://Art/Sprites/16x32/16x32 All Animations.png" id="1_613su"]
 [ext_resource type="Script" uid="uid://cgk4ru6hs6kkj" path="res://Scenes/Enemies/scripts/enemy.gd" id="1_jcvw6"]
+[ext_resource type="Script" uid="uid://cnafnwhjmhu1i" path="res://Scenes/Scripts/hitbox.gd" id="3_x1rqp"]
 
 [sub_resource type="Animation" id="Animation_bbdfx"]
 length = 0.001
@@ -105,7 +106,11 @@ size = Vector2(11.999994, 26)
 [sub_resource type="CircleShape2D" id="CircleShape2D_jcvw6"]
 radius = 100.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubio8"]
+size = Vector2(10, 21)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1317683084]
+collision_layer = 4
 script = ExtResource("1_jcvw6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=768496133]
@@ -122,11 +127,14 @@ position = Vector2(6, 16)
 target_position = Vector2(0, 5)
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=1359057249]
+visible = false
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_nnp3v")
 
 [node name="PlayerDetector" type="Area2D" parent="." unique_id=1543423643]
+visible = false
 collision_layer = 0
+collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=1638199236]
@@ -138,3 +146,12 @@ wait_time = 2.0
 one_shot = true
 
 [node name="IdleTimer" type="Timer" parent="." unique_id=230437428]
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1620106820]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_x1rqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=714549606]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_ubio8")

@@ -1,24 +1,35 @@
 class_name Player extends CharacterBody2D
 
+signal health_update (int)
+
 var speed : float = 100
 @export var gravity : float = 980.0
 @export var jump_force : float = -400
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var effect_player: AnimationPlayer = $EffectPlayer
+@onready var hurtbox: Area2D = $hurtbox
 
 
 var is_charging_jump : bool = false 
 var charge_time : float = 0.0
 var max_charge_time : float = 0.5
 var crouch_time := 0.12
-
+var health : int = 3
+var max_health : int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hurtbox.take_damage.connect ( _take_damage )
 	pass
 
-
+func _take_damage ( damage: int) -> void:
+	health -= damage
+	printerr (health)
+	health_update.emit ( health )
+	if health <= 0:
+		die()
+ 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

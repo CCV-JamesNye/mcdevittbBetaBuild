@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://bdjaxfep4qkuo"]
 
-[ext_resource type="Script" uid="uid://ol5p7gb4kwwy" path="res://Scenes/Player/Scripts/5_2.gd" id="1_ikgf8"]
+[ext_resource type="Script" uid="uid://ol5p7gb4kwwy" path="res://Scenes/Scripts/5_2.gd" id="1_ikgf8"]
 [ext_resource type="Texture2D" uid="uid://bjlwknxas42ax" path="res://Art/qwop background.jpg" id="2_ikgf8"]
-[ext_resource type="Script" uid="uid://84pgdjpt8iny" path="res://Scenes/Player/Scripts/player-characterbody.gd" id="4_dxckq"]
 [ext_resource type="Texture2D" uid="uid://723kg56j7oad" path="res://Art/finish line.png" id="5_3idxa"]
-[ext_resource type="Script" uid="uid://7cwfcovirry6" path="res://Scenes/Player/Scripts/finish.gd" id="5_kawbu"]
-[ext_resource type="Texture2D" uid="uid://chil08u31bt7c" path="res://Art/Sprites/16x32/16x32 All Animations.png" id="5_st6jg"]
-[ext_resource type="Script" uid="uid://cnfmn28sh2yok" path="res://Scenes/Player/Scripts/kill_box.gd" id="7_kawbu"]
+[ext_resource type="PackedScene" uid="uid://bw5phu6o06q5u" path="res://Scenes/Player/player.tscn" id="5_dxckq"]
+[ext_resource type="Script" uid="uid://7cwfcovirry6" path="res://Scenes/Scripts/finish.gd" id="5_kawbu"]
+[ext_resource type="Script" uid="uid://cnfmn28sh2yok" path="res://Scenes/Scripts/kill_box.gd" id="7_kawbu"]
 [ext_resource type="PackedScene" uid="uid://cithh10v4hpcv" path="res://Scenes/Enemies/enemy.tscn" id="8_dxckq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbdfx"]
@@ -14,143 +13,6 @@ size = Vector2(328, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxckq"]
 size = Vector2(3, 108)
-
-[sub_resource type="Animation" id="Animation_bbdfx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_nnp3v"]
-resource_name = "crouch"
-length = 0.1
-loop_mode = 2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [75]
-}
-
-[sub_resource type="Animation" id="Animation_dxkr7"]
-resource_name = "idle"
-length = 0.4
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 8, 9]
-}
-
-[sub_resource type="Animation" id="Animation_3865w"]
-resource_name = "jump"
-length = 0.3
-loop_mode = 2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [75, 76]
-}
-
-[sub_resource type="Animation" id="Animation_qvhrc"]
-resource_name = "walk"
-length = 0.4
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [13, 26, 25]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7udvr"]
-_data = {
-&"RESET": SubResource("Animation_bbdfx"),
-&"crouch": SubResource("Animation_nnp3v"),
-&"idle": SubResource("Animation_dxkr7"),
-&"jump": SubResource("Animation_3865w"),
-&"walk": SubResource("Animation_qvhrc")
-}
-
-[sub_resource type="Animation" id="Animation_7udvr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_h3p4w"]
-resource_name = "charge_up"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.3, 0.4, 0.46666667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.30663186, 0.99999994, 0.9098643, 1), Color(0, 0.41960785, 0.93333334, 1), Color(0.30588236, 1, 0.9098039, 1), Color(0, 0.41960785, 0.93333334, 1), Color(0.30588236, 1, 0.9098039, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fr6x1"]
-_data = {
-&"RESET": SubResource("Animation_7udvr"),
-&"charge_up": SubResource("Animation_h3p4w")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnp3v"]
-size = Vector2(11.999994, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kawbu"]
 size = Vector2(17, 185)
@@ -176,6 +38,8 @@ shape = SubResource("RectangleShape2D_bbdfx")
 [node name="Finish" type="Area2D" parent="." unique_id=899195980]
 position = Vector2(204, 69)
 scale = Vector2(0.99999994, 1)
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("5_kawbu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Finish" unique_id=346638737]
@@ -189,25 +53,8 @@ flip_h = true
 position = Vector2(105.5, 53)
 shape = SubResource("RectangleShape2D_dxckq")
 
-[node name="player" type="CharacterBody2D" parent="." unique_id=1846505198]
+[node name="player" parent="." unique_id=367371036 instance=ExtResource("5_dxckq")]
 position = Vector2(-167, 74)
-script = ExtResource("4_dxckq")
-
-[node name="Sprite2D" type="Sprite2D" parent="player" unique_id=1510161516]
-position = Vector2(176, 78)
-texture = ExtResource("5_st6jg")
-hframes = 10
-vframes = 10
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="player" unique_id=381006527]
-libraries/ = SubResource("AnimationLibrary_7udvr")
-
-[node name="EffectPlayer" type="AnimationPlayer" parent="player" unique_id=1029384784]
-libraries/ = SubResource("AnimationLibrary_fr6x1")
-
-[node name="PlayerCollision" type="CollisionShape2D" parent="player" unique_id=297148975]
-position = Vector2(176, 81.66667)
-shape = SubResource("RectangleShape2D_nnp3v")
 
 [node name="Death" type="StaticBody2D" parent="." unique_id=283348788]
 position = Vector2(-98, 91)
@@ -227,6 +74,8 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
 
 [node name="Area2D" type="Area2D" parent="Spikes" unique_id=537741181]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("7_kawbu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Area2D" unique_id=1846434066]
@@ -246,6 +95,8 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
 
 [node name="Area2D" type="Area2D" parent="Spikes3" unique_id=280689423]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("7_kawbu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes3/Area2D" unique_id=1896953740]

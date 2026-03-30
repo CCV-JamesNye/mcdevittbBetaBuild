@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6ugbw7a01r56"]
 
-[ext_resource type="Script" uid="uid://crnajhhpnqkgw" path="res://Scenes/Player/Scripts/scene_transition.gd" id="1_crfs3"]
+[ext_resource type="Script" uid="uid://crnajhhpnqkgw" path="res://Scenes/Scripts/scene_transition.gd" id="1_crfs3"]
 
 [sub_resource type="Animation" id="Animation_vin40"]
 length = 0.001

@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
+
 @export var patrol_speed : float = 30.0
 @export var gravity : float = 980.0
-
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var floor_detector: RayCast2D = $FloorDetector
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -70,8 +70,8 @@ func _check_for_player ( body : Node2D ) -> void:
 		chase_timer.stop()
 		current_state = STATE.CHASE
 		
-func _player_left ( body : Node2D ) -> void:
-	if body is Player:
+func _player_left(body: Node2D) -> void:
+	if body is Player and is_instance_valid(chase_timer) and chase_timer.is_inside_tree():
 		chase_timer.start()
 		
 func _stop_chasing () -> void:
