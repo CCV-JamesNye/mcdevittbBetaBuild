@@ -142,14 +142,19 @@ _data = {
 size = Vector2(11.999994, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtuoh"]
-size = Vector2(10, 21)
+size = Vector2(12, 24)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpcdj"]
 bg_color = Color(0.8081649, 0.090980284, 0.24820995, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="GDScript" id="GDScript_xpcdj"]
 script/source = "extends ProgressBar
-@onready var player: Player = $\"../..\"
+@onready var player: Player = $\"..\"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -191,24 +196,24 @@ monitorable = false
 script = ExtResource("3_xpcdj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=707105331]
-position = Vector2(176, 81.5)
+position = Vector2(176, 83)
 shape = SubResource("RectangleShape2D_mtuoh")
 debug_color = Color(0.8497243, 0.31889802, 0.51173776, 0.41960785)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1346967314]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=616191593]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=616191593]
 anchors_preset = -1
 anchor_left = 0.55
 anchor_top = 0.5
 anchor_right = 0.55
 anchor_bottom = 0.5
-offset_left = -173.0
-offset_top = -85.0
-offset_right = -129.0
-offset_bottom = -80.0
+offset_left = 168.0
+offset_top = 64.0
+offset_right = 183.0
+offset_bottom = 68.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_xpcdj")
-max_value = 3.0
-value = 3.0
+max_value = 2.0
+value = 2.0
 show_percentage = false
 script = SubResource("GDScript_xpcdj")

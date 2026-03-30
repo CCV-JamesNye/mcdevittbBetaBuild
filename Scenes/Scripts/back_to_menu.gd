@@ -9,5 +9,4 @@ func _ready() -> void:
 
 
 func _menu () -> void:
-	await SceneTransition.fade_to_black ()
-	get_tree().change_scene_to_file("res://Scenes/UI/mainmenu.tscn")
+	SceneTransition.load_scene("res://Scenes/UI/mainmenu.tscn")

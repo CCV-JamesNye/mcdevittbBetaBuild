@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://723kg56j7oad" path="res://Art/finish line.png" id="5_3idxa"]
 [ext_resource type="PackedScene" uid="uid://bw5phu6o06q5u" path="res://Scenes/Player/player.tscn" id="5_dxckq"]
 [ext_resource type="Script" uid="uid://7cwfcovirry6" path="res://Scenes/Scripts/finish.gd" id="5_kawbu"]
-[ext_resource type="Script" uid="uid://cnfmn28sh2yok" path="res://Scenes/Scripts/kill_box.gd" id="7_kawbu"]
+[ext_resource type="Script" uid="uid://cnafnwhjmhu1i" path="res://Scenes/Scripts/hitbox.gd" id="6_kawbu"]
 [ext_resource type="PackedScene" uid="uid://cithh10v4hpcv" path="res://Scenes/Enemies/enemy.tscn" id="8_dxckq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbdfx"]
@@ -56,10 +56,10 @@ shape = SubResource("RectangleShape2D_dxckq")
 [node name="player" parent="." unique_id=367371036 instance=ExtResource("5_dxckq")]
 position = Vector2(-167, 74)
 
-[node name="Death" type="StaticBody2D" parent="." unique_id=283348788]
+[node name="Wall" type="StaticBody2D" parent="." unique_id=283348788]
 position = Vector2(-98, 91)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Death" unique_id=69195638]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=69195638]
 position = Vector2(89.5, -0.5)
 shape = SubResource("RectangleShape2D_kawbu")
 
@@ -74,34 +74,35 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
 
 [node name="Area2D" type="Area2D" parent="Spikes" unique_id=537741181]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("7_kawbu")
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("6_kawbu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Area2D" unique_id=1846434066]
 light_mask = 2
-position = Vector2(1.4999954, -0.6395817)
-scale = Vector2(1.0714283, 1.0208333)
+position = Vector2(2.999999, -2.0000067)
+scale = Vector2(1.1383924, 1.0652483)
 polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
 
-[node name="Spikes3" type="StaticBody2D" parent="." unique_id=1762413175]
-position = Vector2(269, 141)
+[node name="Spikes2" type="StaticBody2D" parent="." unique_id=1926967358]
+position = Vector2(252, 141)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes3" unique_id=1179741231]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes2" unique_id=202790450]
 polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
 
-[node name="Polygon2D" type="Polygon2D" parent="Spikes3" unique_id=1821528497]
+[node name="Polygon2D" type="Polygon2D" parent="Spikes2" unique_id=200311842]
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
 
-[node name="Area2D" type="Area2D" parent="Spikes3" unique_id=280689423]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("7_kawbu")
+[node name="Area2D" type="Area2D" parent="Spikes2" unique_id=1211358528]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("6_kawbu")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes3/Area2D" unique_id=1896953740]
-position = Vector2(1.4999954, -0.6395817)
-scale = Vector2(1.0714283, 1.0208333)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes2/Area2D" unique_id=1169893157]
+light_mask = 2
+position = Vector2(2.999999, -2.0000067)
+scale = Vector2(1.1383924, 1.0652483)
 polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
 
 [node name="ledge" type="StaticBody2D" parent="." unique_id=1676898832]
@@ -122,3 +123,12 @@ color = Color(0.1254902, 1, 1, 1)
 
 [node name="Enemy" parent="." unique_id=1317683084 instance=ExtResource("8_dxckq")]
 position = Vector2(174, 102)
+
+[node name="Timer" type="CanvasLayer" parent="." unique_id=621447675]
+
+[node name="TimerLabel" type="Label" parent="Timer" unique_id=252118566]
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 94.0
+offset_bottom = 20.0
+text = "Time: 5"

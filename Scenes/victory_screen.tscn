@@ -51,8 +51,8 @@ layout_mode = 2
 size_flags_vertical = 6
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
-text = "You made it past 
-the spikes!"
+text = "You made it to 
+the end in time!"
 horizontal_alignment = 1
 
 [node name="menubutton" type="Button" parent="Control/MarginContainer/VBoxContainer" unique_id=1720698815]

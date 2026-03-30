@@ -85,7 +85,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = SubResource("FontFile_5c06j")
 theme_override_font_sizes/font_size = 27
-text = "Avoid the Spikes!"
+text = "Speed Run!"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1765664986]
