@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var time_limit: float = 5.0
+@export var time_limit: float = 30.0
 
 var time_left: float
 var game_over := false

@@ -1,33 +1,47 @@
 [gd_scene format=3 uid="uid://bdjaxfep4qkuo"]
 
 [ext_resource type="Script" uid="uid://ol5p7gb4kwwy" path="res://Scenes/Scripts/5_2.gd" id="1_ikgf8"]
-[ext_resource type="Texture2D" uid="uid://bjlwknxas42ax" path="res://Art/qwop background.jpg" id="2_ikgf8"]
-[ext_resource type="Texture2D" uid="uid://723kg56j7oad" path="res://Art/finish line.png" id="5_3idxa"]
+[ext_resource type="Texture2D" uid="uid://dapni25usjrh7" path="res://Art/finish line new.png" id="4_kawbu"]
 [ext_resource type="PackedScene" uid="uid://bw5phu6o06q5u" path="res://Scenes/Player/player.tscn" id="5_dxckq"]
 [ext_resource type="Script" uid="uid://7cwfcovirry6" path="res://Scenes/Scripts/finish.gd" id="5_kawbu"]
 [ext_resource type="Script" uid="uid://cnafnwhjmhu1i" path="res://Scenes/Scripts/hitbox.gd" id="6_kawbu"]
 [ext_resource type="PackedScene" uid="uid://cithh10v4hpcv" path="res://Scenes/Enemies/enemy.tscn" id="8_dxckq"]
+[ext_resource type="AudioStream" uid="uid://jc6sxwehbovk" path="res://Audio/music/fast pace music.ogg" id="8_st6jg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbdfx"]
 size = Vector2(328, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxckq"]
-size = Vector2(3, 108)
+size = Vector2(12, 47.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kawbu"]
-size = Vector2(17, 185)
+size = Vector2(17, 179.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i20jp"]
+size = Vector2(17, 118.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cm28"]
+size = Vector2(3.5000021, 330.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6buv"]
+size = Vector2(80, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmyn8"]
+size = Vector2(64, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0830f"]
+size = Vector2(58, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_st6jg"]
-size = Vector2(79, 12)
+size = Vector2(282, 12)
 
 [node name="5-2" type="Node2D" unique_id=2013888550]
 script = ExtResource("1_ikgf8")
 
-[node name="background" type="Sprite2D" parent="." unique_id=1010624436]
-texture_filter = 2
-position = Vector2(160.75, 90)
-scale = Vector2(0.38176468, 0.68248165)
-texture = ExtResource("2_ikgf8")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1439078299]
+offset_right = 332.0
+offset_bottom = 185.0
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
 
 [node name="floor" type="StaticBody2D" parent="." unique_id=966332674]
 
@@ -36,41 +50,104 @@ position = Vector2(163, 176)
 shape = SubResource("RectangleShape2D_bbdfx")
 
 [node name="Finish" type="Area2D" parent="." unique_id=899195980]
-position = Vector2(204, 69)
+position = Vector2(177.00002, 91)
 scale = Vector2(0.99999994, 1)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("5_kawbu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Finish" unique_id=346638737]
-position = Vector2(68.57205, 12.809093)
-rotation = 0.6719518
-scale = Vector2(0.6308376, 0.43518713)
-texture = ExtResource("5_3idxa")
-flip_h = true
+position = Vector2(118.734535, 72)
+scale = Vector2(0.11275306, 0.1642206)
+texture = ExtResource("4_kawbu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Finish" unique_id=1804183697]
-position = Vector2(105.5, 53)
+position = Vector2(118.875, 72.25)
+rotation = 1.5707964
 shape = SubResource("RectangleShape2D_dxckq")
 
 [node name="player" parent="." unique_id=367371036 instance=ExtResource("5_dxckq")]
-position = Vector2(-167, 74)
+position = Vector2(-83, 121)
 
-[node name="Wall" type="StaticBody2D" parent="." unique_id=283348788]
+[node name="LeftScreenWall" type="StaticBody2D" parent="." unique_id=283348788]
 position = Vector2(-98, 91)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=69195638]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftScreenWall" unique_id=69195638]
 position = Vector2(89.5, -0.5)
 shape = SubResource("RectangleShape2D_kawbu")
 
+[node name="RightScreenWall" type="StaticBody2D" parent="." unique_id=1820974833]
+position = Vector2(239, 84)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightScreenWall" unique_id=616579022]
+position = Vector2(89.5, -0.5)
+shape = SubResource("RectangleShape2D_kawbu")
+
+[node name="Pillar1" type="StaticBody2D" parent="." unique_id=1258715274]
+position = Vector2(-133, 91)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar1" unique_id=44901883]
+position = Vector2(237, 18.4375)
+shape = SubResource("RectangleShape2D_i20jp")
+
+[node name="ColorRect" type="ColorRect" parent="Pillar1" unique_id=489721693]
+offset_left = 228.0
+offset_top = -42.0
+offset_right = 246.0
+offset_bottom = 78.0
+color = Color(0.3530626, 0.35306263, 0.35306257, 1)
+
+[node name="Pillar2" type="StaticBody2D" parent="." unique_id=112911606]
+position = Vector2(-63, 42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar2" unique_id=1395714932]
+position = Vector2(237, 18.4375)
+shape = SubResource("RectangleShape2D_i20jp")
+
+[node name="ColorRect" type="ColorRect" parent="Pillar2" unique_id=427693208]
+offset_left = 228.0
+offset_top = -42.0
+offset_right = 246.0
+offset_bottom = 78.0
+color = Color(0.3530626, 0.35306263, 0.35306257, 1)
+
+[node name="Pillar3" type="StaticBody2D" parent="." unique_id=504370333]
+position = Vector2(26, 91)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar3" unique_id=1915588487]
+position = Vector2(237, 18.4375)
+shape = SubResource("RectangleShape2D_i20jp")
+
+[node name="ColorRect" type="ColorRect" parent="Pillar3" unique_id=1891200260]
+offset_left = 228.0
+offset_top = -42.0
+offset_right = 246.0
+offset_bottom = 78.0
+color = Color(0.3530626, 0.35306263, 0.35306257, 1)
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=1757171972]
+position = Vector2(78, -228)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling" unique_id=1317714839]
+position = Vector2(230.24998, -87.56251)
+shape = SubResource("RectangleShape2D_4cm28")
+
+[node name="ColorRect" type="ColorRect" parent="Ceiling" unique_id=704187706]
+offset_left = 228.0
+offset_top = -253.10738
+offset_right = 232.32784
+offset_bottom = 77.999985
+color = Color(0.3530626, 0.35306263, 0.35306257, 1)
+
 [node name="Spikes" type="StaticBody2D" parent="." unique_id=1467606159]
-position = Vector2(95, 141)
+position = Vector2(125, 21)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes" unique_id=792702675]
-polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
+polygon = PackedVector2Array(-29, 28, -21, 19, -13, 28)
 
 [node name="Polygon2D" type="Polygon2D" parent="Spikes" unique_id=1782997873]
-color = Color(0, 0, 0, 1)
+color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
 
 [node name="Area2D" type="Area2D" parent="Spikes" unique_id=537741181]
@@ -82,53 +159,259 @@ script = ExtResource("6_kawbu")
 light_mask = 2
 position = Vector2(2.999999, -2.0000067)
 scale = Vector2(1.1383924, 1.0652483)
+polygon = PackedVector2Array(-28.988243, 28.162455, -21, 19, -13.176476, 28.162455)
+
+[node name="Spikes2" type="StaticBody2D" parent="." unique_id=992516061]
+position = Vector2(284, 21)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes2" unique_id=2084659885]
+polygon = PackedVector2Array(-29, 28, -21, 19, -13, 28)
+
+[node name="Polygon2D" type="Polygon2D" parent="Spikes2" unique_id=1905801122]
+color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
 
-[node name="Spikes2" type="StaticBody2D" parent="." unique_id=1926967358]
-position = Vector2(252, 141)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes2" unique_id=202790450]
-polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
-
-[node name="Polygon2D" type="Polygon2D" parent="Spikes2" unique_id=200311842]
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
-
-[node name="Area2D" type="Area2D" parent="Spikes2" unique_id=1211358528]
+[node name="Area2D" type="Area2D" parent="Spikes2" unique_id=225449788]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("6_kawbu")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes2/Area2D" unique_id=1169893157]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes2/Area2D" unique_id=2139183036]
 light_mask = 2
-position = Vector2(2.999999, -2.0000067)
-scale = Vector2(1.1383924, 1.0652483)
+position = Vector2(2.333323, -2.0000067)
+scale = Vector2(1.1067697, 1.0652483)
+polygon = PackedVector2Array(-28.988243, 28.162455, -21, 19, -13.176476, 28.162455)
+
+[node name="Spikes3" type="StaticBody2D" parent="." unique_id=344695910]
+position = Vector2(153, 148)
+rotation = 3.1415927
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes3" unique_id=566764559]
+polygon = PackedVector2Array(-29, 28, -21, 19, -13, 28)
+
+[node name="Polygon2D" type="Polygon2D" parent="Spikes3" unique_id=1342744824]
+color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(-28, 28, -21, 19, -14, 28)
 
+[node name="Area2D" type="Area2D" parent="Spikes3" unique_id=1433407217]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("6_kawbu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes3/Area2D" unique_id=682671795]
+light_mask = 2
+position = Vector2(1.9996775, -2.0000067)
+scale = Vector2(1.0988523, 1.0652483)
+polygon = PackedVector2Array(-28.988243, 28.162455, -21, 19, -13.176476, 28.162455)
+
 [node name="ledge" type="StaticBody2D" parent="." unique_id=1676898832]
-position = Vector2(181, 130)
+position = Vector2(25, 162)
+scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ledge" unique_id=2114760904]
-position = Vector2(27.5, -5)
-shape = SubResource("RectangleShape2D_st6jg")
+position = Vector2(100, -26)
+shape = SubResource("RectangleShape2D_y6buv")
 one_way_collision = true
 debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
 
 [node name="ColorRect" type="ColorRect" parent="ledge" unique_id=15494340]
-offset_left = -12.0
-offset_top = -11.0
-offset_right = 67.0
-offset_bottom = 1.0
-color = Color(0.1254902, 1, 1, 1)
+offset_left = 60.0
+offset_top = -32.0
+offset_right = 140.0
+offset_bottom = -20.0
+color = Color(0.3744832, 0.22748989, 0, 1)
+
+[node name="ledge2" type="StaticBody2D" parent="." unique_id=1380873864]
+position = Vector2(-35, 143)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ledge2" unique_id=1433051756]
+position = Vector2(110, -26)
+shape = SubResource("RectangleShape2D_y6buv")
+one_way_collision = true
+debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="ledge2" unique_id=108934354]
+offset_left = 70.0
+offset_top = -32.0
+offset_right = 150.0
+offset_bottom = -20.0
+color = Color(0.3744832, 0.22748989, 0, 1)
+
+[node name="ledge3" type="StaticBody2D" parent="." unique_id=486682173]
+position = Vector2(20, 120)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ledge3" unique_id=12079860]
+position = Vector2(110, -26)
+shape = SubResource("RectangleShape2D_y6buv")
+one_way_collision = true
+debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="ledge3" unique_id=788126002]
+offset_left = 70.0
+offset_top = -32.0
+offset_right = 150.0
+offset_bottom = -20.0
+color = Color(0.3744832, 0.22748989, 0, 1)
+
+[node name="ledge4" type="StaticBody2D" parent="." unique_id=1736417883]
+position = Vector2(-35, 101)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ledge4" unique_id=1233108669]
+position = Vector2(110, -26)
+shape = SubResource("RectangleShape2D_y6buv")
+one_way_collision = true
+debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="ledge4" unique_id=499502236]
+offset_left = 70.0
+offset_top = -32.0
+offset_right = 150.0
+offset_bottom = -20.0
+color = Color(0.3744832, 0.22748989, 0, 1)
+
+[node name="ledge5" type="StaticBody2D" parent="." unique_id=762797651]
+position = Vector2(20, 77)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ledge5" unique_id=497449171]
+position = Vector2(110, -26)
+shape = SubResource("RectangleShape2D_y6buv")
+one_way_collision = true
+debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="ledge5" unique_id=1089320559]
+offset_left = 70.0
+offset_top = -32.0
+offset_right = 150.0
+offset_bottom = -20.0
+color = Color(0.3744832, 0.22748989, 0, 1)
+
+[node name="ledge6" type="StaticBody2D" parent="." unique_id=2016904587]
+position = Vector2(179, 156)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ledge6" unique_id=265940991]
+position = Vector2(118, -26)
+shape = SubResource("RectangleShape2D_dmyn8")
+one_way_collision = true
+debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="ledge6" unique_id=1291552896]
+offset_left = 86.0
+offset_top = -32.0
+offset_right = 150.0
+offset_bottom = -20.0
+color = Color(0.3744832, 0.22748989, 0, 1)
+
+[node name="ledge7" type="StaticBody2D" parent="." unique_id=1487724481]
+position = Vector2(148, 130)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ledge7" unique_id=1910756642]
+position = Vector2(99, -26)
+shape = SubResource("RectangleShape2D_0830f")
+one_way_collision = true
+debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="ledge7" unique_id=306033499]
+offset_left = 70.0
+offset_top = -32.0
+offset_right = 128.0
+offset_bottom = -20.0
+color = Color(0.3744832, 0.22748989, 0, 1)
+
+[node name="ledge8" type="StaticBody2D" parent="." unique_id=988582480]
+position = Vector2(190, 109)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ledge8" unique_id=615278905]
+position = Vector2(99, -26)
+shape = SubResource("RectangleShape2D_0830f")
+one_way_collision = true
+debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="ledge8" unique_id=1894655830]
+offset_left = 70.0
+offset_top = -32.0
+offset_right = 128.0
+offset_bottom = -20.0
+color = Color(0.3744832, 0.22748989, 0, 1)
+
+[node name="ledge9" type="StaticBody2D" parent="." unique_id=607084220]
+position = Vector2(149, 82)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ledge9" unique_id=1353377981]
+position = Vector2(99, -26)
+shape = SubResource("RectangleShape2D_0830f")
+one_way_collision = true
+debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="ledge9" unique_id=574795932]
+offset_left = 70.0
+offset_top = -32.0
+offset_right = 128.0
+offset_bottom = -20.0
+color = Color(0.3744832, 0.22748989, 0, 1)
+
+[node name="ledge10" type="StaticBody2D" parent="." unique_id=267151476]
+position = Vector2(190, 65)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ledge10" unique_id=343851693]
+position = Vector2(99, -26)
+shape = SubResource("RectangleShape2D_0830f")
+one_way_collision = true
+debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="ledge10" unique_id=1773539645]
+offset_left = 70.0
+offset_top = -32.0
+offset_right = 128.0
+offset_bottom = -20.0
+color = Color(0.3744832, 0.22748989, 0, 1)
+
+[node name="enemyledge" type="StaticBody2D" parent="." unique_id=532016205]
+position = Vector2(124, 170)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyledge" unique_id=2135310904]
+position = Vector2(119, -8)
+shape = SubResource("RectangleShape2D_st6jg")
+one_way_collision = true
+debug_color = Color(0.29308283, 0.5056579, 0.97655123, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="enemyledge" unique_id=134934216]
+offset_left = -22.0
+offset_top = -14.0
+offset_right = 260.0
+offset_bottom = -2.0
+color = Color(0.25562915, 0.002627629, 0.015973296, 1)
 
 [node name="Enemy" parent="." unique_id=1317683084 instance=ExtResource("8_dxckq")]
-position = Vector2(174, 102)
+position = Vector2(118, 154)
 
 [node name="Timer" type="CanvasLayer" parent="." unique_id=621447675]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 
 [node name="TimerLabel" type="Label" parent="Timer" unique_id=252118566]
-offset_left = 3.0
-offset_top = -3.0
-offset_right = 94.0
-offset_bottom = 20.0
-text = "Time: 5"
+offset_left = 2.0
+offset_top = 6.0
+offset_right = 67.0
+offset_bottom = 29.0
+text = "Time: 30"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=90992990]
+stream = ExtResource("8_st6jg")
+volume_db = -15.0
+autoplay = true
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1152512009]
+offset_top = 169.0
+offset_right = 332.0
+offset_bottom = 185.0
+color = Color(0.2936601, 0.29366007, 0.29366007, 1)

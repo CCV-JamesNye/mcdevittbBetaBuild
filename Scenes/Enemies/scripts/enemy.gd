@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var patrol_speed : float = 30.0
+@export var patrol_speed : float = 20.0
 @export var gravity : float = 980.0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var floor_detector: RayCast2D = $FloorDetector

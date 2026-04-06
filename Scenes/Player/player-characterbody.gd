@@ -4,16 +4,21 @@ signal health_update (int)
 
 var speed : float = 100
 @export var gravity : float = 980.0
-@export var jump_force : float = -400
+@export var jump_force : float = -275
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var effect_player: AnimationPlayer = $EffectPlayer
 @onready var hurtbox: Area2D = $hurtbox
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
+@onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
+@onready var charge_jump_sound: AudioStreamPlayer2D = $ChargeJumpSound
+@onready var overlay: CanvasLayer = $Overlay
+
 
 
 var is_charging_jump : bool = false 
 var charge_time : float = 0.0
-var max_charge_time : float = 0.5
+var max_charge_time : float = 0.4
 var crouch_time := 0.12
 var health : int = 2
 var max_health : int = 2
@@ -26,6 +31,8 @@ func _ready() -> void:
 func _take_damage ( damage: int) -> void:
 	health -= damage
 	printerr (health)
+	overlay.screen_flash()
+	effect_player.play("hurt")
 	health_update.emit ( health )
 	if health <= 0:
 		die()
@@ -86,6 +93,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		is_charging_jump = true
 		charge_time = 0.0
 		animation_player.play("crouch")
+		effect_player.play("chargejump")
 	
 		
 		
@@ -97,6 +105,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		is_charging_jump = false
 		effect_player.stop()
 		animation_player.play("jump")
+		jump_sound.play()
 		
 		
 		

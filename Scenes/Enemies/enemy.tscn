@@ -104,12 +104,13 @@ _data = {
 size = Vector2(11.999994, 26)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jcvw6"]
-radius = 100.0
+radius = 42.0119
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubio8"]
 size = Vector2(10, 21)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1317683084]
+scale = Vector2(0.5, 0.5)
 collision_layer = 4
 script = ExtResource("1_jcvw6")
 
@@ -132,7 +133,6 @@ position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_nnp3v")
 
 [node name="PlayerDetector" type="Area2D" parent="." unique_id=1543423643]
-visible = false
 collision_layer = 0
 collision_mask = 2
 monitorable = false

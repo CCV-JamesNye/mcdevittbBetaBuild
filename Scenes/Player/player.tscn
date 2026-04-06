@@ -2,7 +2,33 @@
 
 [ext_resource type="Script" uid="uid://84pgdjpt8iny" path="res://Scenes/Player/player-characterbody.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://chil08u31bt7c" path="res://Art/Sprites/16x32/16x32 All Animations.png" id="2_xpcdj"]
+[ext_resource type="AudioStream" uid="uid://breeufv5qf0fn" path="res://Audio/sounds/power_up.ogg" id="3_dd0ac"]
+[ext_resource type="AudioStream" uid="uid://brrnw80bb6l67" path="res://Audio/sounds/hurt.ogg" id="3_htcer"]
 [ext_resource type="Script" uid="uid://dv8cv3bwqbxdd" path="res://Scenes/Scripts/HurtBox.gd" id="3_xpcdj"]
+[ext_resource type="AudioStream" uid="uid://dh5y0r7qc2fs3" path="res://Audio/sounds/jump.ogg" id="6_0u5uq"]
+[ext_resource type="Script" uid="uid://tlv40eq6ifbw" path="res://Scenes/Player/overlay.gd" id="7_0u5uq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpcdj"]
+bg_color = Color(0.8081649, 0.090980284, 0.24820995, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_xpcdj"]
+script/source = "extends ProgressBar
+@onready var player: Player = $\"..\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	player.health_update.connect ( _update_bar )
+	pass # Replace with function body.
+	
+func _update_bar ( health: int ) -> void:
+	value = health
+"
 
 [sub_resource type="Animation" id="Animation_bbdfx"]
 length = 0.001
@@ -132,10 +158,51 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(0.30663186, 0.99999994, 0.9098643, 1), Color(0, 0.41960785, 0.93333334, 1), Color(0.30588236, 1, 0.9098039, 1), Color(0, 0.41960785, 0.93333334, 1), Color(0.30588236, 1, 0.9098039, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_dd0ac"]
+resource_name = "chargejump"
+length = 0.33333334
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChargeJumpSound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_dd0ac")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_htcer"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtSound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_htcer")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fr6x1"]
 _data = {
 &"RESET": SubResource("Animation_7udvr"),
-&"charge_up": SubResource("Animation_h3p4w")
+&"charge_up": SubResource("Animation_h3p4w"),
+&"chargejump": SubResource("Animation_dd0ac"),
+&"hurt": SubResource("Animation_htcer")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnp3v"]
@@ -144,29 +211,8 @@ size = Vector2(11.999994, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtuoh"]
 size = Vector2(12, 24)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpcdj"]
-bg_color = Color(0.8081649, 0.090980284, 0.24820995, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="GDScript" id="GDScript_xpcdj"]
-script/source = "extends ProgressBar
-@onready var player: Player = $\"..\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	player.health_update.connect ( _update_bar )
-	pass # Replace with function body.
-	
-func _update_bar ( health: int ) -> void:
-	value = health
-"
-
 [node name="player" type="CharacterBody2D" unique_id=367371036]
+scale = Vector2(0.5, 0.5)
 collision_layer = 2
 script = ExtResource("1_a3d8c")
 
@@ -175,6 +221,22 @@ position = Vector2(176, 78)
 texture = ExtResource("2_xpcdj")
 hframes = 10
 vframes = 10
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=616191593]
+anchors_preset = -1
+anchor_left = 0.55
+anchor_top = 0.5
+anchor_right = 0.55
+anchor_bottom = 0.5
+offset_left = 168.0
+offset_top = 64.0
+offset_right = 183.0
+offset_bottom = 68.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_xpcdj")
+max_value = 2.0
+value = 2.0
+show_percentage = false
+script = SubResource("GDScript_xpcdj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1159049076]
 libraries/ = SubResource("AnimationLibrary_7udvr")
@@ -200,20 +262,20 @@ position = Vector2(176, 83)
 shape = SubResource("RectangleShape2D_mtuoh")
 debug_color = Color(0.8497243, 0.31889802, 0.51173776, 0.41960785)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1346967314]
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1240298033]
+stream = ExtResource("6_0u5uq")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=616191593]
-anchors_preset = -1
-anchor_left = 0.55
-anchor_top = 0.5
-anchor_right = 0.55
-anchor_bottom = 0.5
-offset_left = 168.0
-offset_top = 64.0
-offset_right = 183.0
-offset_bottom = 68.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_xpcdj")
-max_value = 2.0
-value = 2.0
-show_percentage = false
-script = SubResource("GDScript_xpcdj")
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=1962879887]
+
+[node name="ChargeJumpSound" type="AudioStreamPlayer2D" parent="." unique_id=920741553]
+volume_db = -15.0
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1877840603]
+visible = false
+script = ExtResource("7_0u5uq")
+
+[node name="Flash" type="ColorRect" parent="Overlay" unique_id=55584204]
+visible = false
+offset_right = 323.0
+offset_bottom = 183.0
+color = Color(0.8627451, 0.24313726, 0.16470589, 0.47058824)
