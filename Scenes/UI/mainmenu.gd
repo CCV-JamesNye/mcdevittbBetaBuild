@@ -14,6 +14,8 @@ func _ready() -> void:
 	check_box_2.toggled.connect(mute_sfx)
 	check_box.release_focus()
 	check_box_2.release_focus()
+	check_box.button_pressed = !Audiomanager.music_muted
+	check_box_2.button_pressed = !Audiomanager.sfx_muted
 	pass # Replace with function body.
 
 func _quit_game () -> void:
@@ -36,5 +38,5 @@ func mute_sfx (toggled_on : bool ) -> void:
 		Audiomanager.mute_sfx(false)
 	else:
 		Audiomanager.mute_sfx(true)
-	check_box.release_focus()
+	check_box_2.release_focus()
 	pass

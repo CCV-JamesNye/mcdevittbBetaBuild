@@ -180,7 +180,7 @@ script = ExtResource("6_kawbu")
 light_mask = 2
 position = Vector2(2.333323, -2.0000067)
 scale = Vector2(1.1067697, 1.0652483)
-polygon = PackedVector2Array(-28.988243, 28.162455, -21, 19, -13.176476, 28.162455)
+polygon = PackedVector2Array(-28.310593, 28.162455, -21, 19, -13.854111, 28.162455)
 
 [node name="Spikes3" type="StaticBody2D" parent="." unique_id=344695910]
 position = Vector2(153, 148)
@@ -392,7 +392,7 @@ offset_bottom = -2.0
 color = Color(0.25562915, 0.002627629, 0.015973296, 1)
 
 [node name="Enemy" parent="." unique_id=1317683084 instance=ExtResource("8_dxckq")]
-position = Vector2(118, 154)
+position = Vector2(247, 152)
 
 [node name="Timer" type="CanvasLayer" parent="." unique_id=621447675]
 scale = Vector2(0.5, 0.5)

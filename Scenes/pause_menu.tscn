@@ -52,9 +52,18 @@ unpause it"
 horizontal_alignment = 1
 
 [node name="PauseButton" type="Button" parent="." unique_id=1720698815]
-offset_left = 126.0
-offset_top = 127.0
-offset_right = 196.0
-offset_bottom = 158.0
+offset_left = 167.0
+offset_top = 128.0
+offset_right = 237.0
+offset_bottom = 159.0
 action_mode = 0
 text = "Resume"
+
+[node name="menubutton" type="Button" parent="." unique_id=450434124]
+offset_left = 66.0
+offset_top = 128.0
+offset_right = 162.0
+offset_bottom = 159.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Main Menu"
