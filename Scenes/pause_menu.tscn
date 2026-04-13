@@ -44,13 +44,17 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "Game Paused"
 
-[node name="PauseButton" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=1720698815]
-layout_mode = 2
-text = "Resume"
-
 [node name="Label" type="Label" parent="Control/MarginContainer" unique_id=1510865453]
 layout_mode = 2
 text = "This game will resume when
 you
 unpause it"
 horizontal_alignment = 1
+
+[node name="PauseButton" type="Button" parent="." unique_id=1720698815]
+offset_left = 126.0
+offset_top = 127.0
+offset_right = 196.0
+offset_bottom = 158.0
+action_mode = 0
+text = "Resume"

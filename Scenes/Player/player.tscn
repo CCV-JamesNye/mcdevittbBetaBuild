@@ -264,11 +264,14 @@ debug_color = Color(0.8497243, 0.31889802, 0.51173776, 0.41960785)
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1240298033]
 stream = ExtResource("6_0u5uq")
+bus = &"SFX"
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=1962879887]
+bus = &"SFX"
 
 [node name="ChargeJumpSound" type="AudioStreamPlayer2D" parent="." unique_id=920741553]
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1877840603]
 script = ExtResource("7_0u5uq")
@@ -276,4 +279,5 @@ script = ExtResource("7_0u5uq")
 [node name="Flash" type="ColorRect" parent="Overlay" unique_id=55584204]
 offset_right = 323.0
 offset_bottom = 183.0
+mouse_filter = 2
 color = Color(0.8627451, 0.24313726, 0.16470589, 0.47058824)

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 @export var patrol_speed : float = 20.0
+@export var chase_speed_multiplier : float = 2
 @export var gravity : float = 980.0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var floor_detector: RayCast2D = $FloorDetector
@@ -61,7 +62,7 @@ func handle_patrol() -> void:
 	
 func handle_chase () -> void:
 	animation_player.play("walk")
-	velocity.x=direction.x*(patrol_speed * 3)
+	velocity.x=direction.x*(patrol_speed * chase_speed_multiplier)
 	pass
 	
 func _check_for_player ( body : Node2D ) -> void:

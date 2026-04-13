@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var flash: ColorRect = $Flash
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	flash.modulate=Color(1,1,1,0)
@@ -15,3 +16,4 @@ func screen_flash () -> void:
 	var tween2 = create_tween()
 	tween2.tween_property(flash, "modulate", Color(1,1,1,0) , 0.3)
 	await tween2.finished
+	

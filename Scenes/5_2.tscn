@@ -159,7 +159,7 @@ script = ExtResource("6_kawbu")
 light_mask = 2
 position = Vector2(2.999999, -2.0000067)
 scale = Vector2(1.1383924, 1.0652483)
-polygon = PackedVector2Array(-28.988243, 28.162455, -21, 19, -13.176476, 28.162455)
+polygon = PackedVector2Array(-28.109818, 28.162455, -21, 19, -14.054909, 28.162455)
 
 [node name="Spikes2" type="StaticBody2D" parent="." unique_id=992516061]
 position = Vector2(284, 21)
@@ -407,8 +407,8 @@ text = "Time: 30"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=90992990]
 stream = ExtResource("8_st6jg")
-volume_db = -15.0
 autoplay = true
+bus = &"Music"
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1152512009]
 offset_top = 169.0
